@@ -9,21 +9,39 @@
 /* Begin PBXBuildFile section */
 		438EEAFD2C1B331B00FAB7DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438EEAFC2C1B331B00FAB7DC /* AppDelegate.swift */; };
 		438EEAFF2C1B331B00FAB7DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438EEAFE2C1B331B00FAB7DC /* SceneDelegate.swift */; };
-		438EEB012C1B331B00FAB7DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438EEB002C1B331B00FAB7DC /* ViewController.swift */; };
+		438EEB012C1B331B00FAB7DC /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438EEB002C1B331B00FAB7DC /* ChatViewController.swift */; };
 		438EEB042C1B331B00FAB7DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 438EEB022C1B331B00FAB7DC /* Main.storyboard */; };
 		438EEB062C1B331E00FAB7DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 438EEB052C1B331E00FAB7DC /* Assets.xcassets */; };
 		438EEB092C1B331E00FAB7DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 438EEB072C1B331E00FAB7DC /* LaunchScreen.storyboard */; };
+		438EEB132C1B38BC00FAB7DC /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 438EEB122C1B38BC00FAB7DC /* OpenAI */; };
+		438EEB162C1B391300FAB7DC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 438EEB152C1B391300FAB7DC /* SnapKit */; };
+		438EEB192C1B3A9E00FAB7DC /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438EEB182C1B3A9E00FAB7DC /* Message.swift */; };
+		438EEB1C2C1B3B1100FAB7DC /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438EEB1B2C1B3B1100FAB7DC /* OpenAIRepository.swift */; };
+		438EEB1F2C1B3B8300FAB7DC /* ChatUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438EEB1E2C1B3B8300FAB7DC /* ChatUseCase.swift */; };
+		438EEB232C1B3C2C00FAB7DC /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438EEB222C1B3C2C00FAB7DC /* OpenAIService.swift */; };
+		438EEB2A2C1B54D700FAB7DC /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438EEB292C1B54D700FAB7DC /* ChatViewModel.swift */; };
+		438EEB2E2C1B7B6800FAB7DC /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438EEB2D2C1B7B6800FAB7DC /* DIContainer.swift */; };
+		438EEB302C1B99E900FAB7DC /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438EEB2F2C1B99E900FAB7DC /* MessageCell.swift */; };
+		438EEB322C1B9B2A00FAB7DC /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438EEB312C1B9B2A00FAB7DC /* QuestionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		438EEAF92C1B331B00FAB7DC /* GPT360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPT360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		438EEAFC2C1B331B00FAB7DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		438EEAFE2C1B331B00FAB7DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		438EEB002C1B331B00FAB7DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		438EEB002C1B331B00FAB7DC /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		438EEB032C1B331B00FAB7DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		438EEB052C1B331E00FAB7DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		438EEB082C1B331E00FAB7DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		438EEB0A2C1B331E00FAB7DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		438EEB182C1B3A9E00FAB7DC /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		438EEB1B2C1B3B1100FAB7DC /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
+		438EEB1E2C1B3B8300FAB7DC /* ChatUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUseCase.swift; sourceTree = "<group>"; };
+		438EEB222C1B3C2C00FAB7DC /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
+		438EEB292C1B54D700FAB7DC /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		438EEB2D2C1B7B6800FAB7DC /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		438EEB2F2C1B99E900FAB7DC /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		438EEB312C1B9B2A00FAB7DC /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +49,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				438EEB132C1B38BC00FAB7DC /* OpenAI in Frameworks */,
+				438EEB162C1B391300FAB7DC /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +76,103 @@
 		438EEAFB2C1B331B00FAB7DC /* GPT360 */ = {
 			isa = PBXGroup;
 			children = (
-				438EEAFC2C1B331B00FAB7DC /* AppDelegate.swift */,
-				438EEAFE2C1B331B00FAB7DC /* SceneDelegate.swift */,
-				438EEB002C1B331B00FAB7DC /* ViewController.swift */,
+				438EEB2C2C1B688500FAB7DC /* APP */,
+				438EEB102C1B379300FAB7DC /* Domain */,
+				438EEB202C1B3BF500FAB7DC /* Data */,
+				438EEB272C1B54A800FAB7DC /* Presentation */,
 				438EEB022C1B331B00FAB7DC /* Main.storyboard */,
 				438EEB052C1B331E00FAB7DC /* Assets.xcassets */,
 				438EEB072C1B331E00FAB7DC /* LaunchScreen.storyboard */,
 				438EEB0A2C1B331E00FAB7DC /* Info.plist */,
 			);
 			path = GPT360;
+			sourceTree = "<group>";
+		};
+		438EEB102C1B379300FAB7DC /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				438EEB172C1B3A8A00FAB7DC /* Entities */,
+				438EEB1D2C1B3B6500FAB7DC /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		438EEB172C1B3A8A00FAB7DC /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				438EEB182C1B3A9E00FAB7DC /* Message.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		438EEB1D2C1B3B6500FAB7DC /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				438EEB1E2C1B3B8300FAB7DC /* ChatUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		438EEB202C1B3BF500FAB7DC /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				438EEB242C1B419800FAB7DC /* Repositories */,
+				438EEB212C1B3C1600FAB7DC /* Services */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		438EEB212C1B3C1600FAB7DC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				438EEB222C1B3C2C00FAB7DC /* OpenAIService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		438EEB242C1B419800FAB7DC /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				438EEB1B2C1B3B1100FAB7DC /* OpenAIRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		438EEB272C1B54A800FAB7DC /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				438EEB2B2C1B575B00FAB7DC /* Views */,
+				438EEB282C1B54BD00FAB7DC /* ViewModels */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		438EEB282C1B54BD00FAB7DC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				438EEB292C1B54D700FAB7DC /* ChatViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		438EEB2B2C1B575B00FAB7DC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				438EEB002C1B331B00FAB7DC /* ChatViewController.swift */,
+				438EEB2F2C1B99E900FAB7DC /* MessageCell.swift */,
+				438EEB312C1B9B2A00FAB7DC /* QuestionCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		438EEB2C2C1B688500FAB7DC /* APP */ = {
+			isa = PBXGroup;
+			children = (
+				438EEAFC2C1B331B00FAB7DC /* AppDelegate.swift */,
+				438EEAFE2C1B331B00FAB7DC /* SceneDelegate.swift */,
+				438EEB2D2C1B7B6800FAB7DC /* DIContainer.swift */,
+			);
+			path = APP;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +191,10 @@
 			dependencies = (
 			);
 			name = GPT360;
+			packageProductDependencies = (
+				438EEB122C1B38BC00FAB7DC /* OpenAI */,
+				438EEB152C1B391300FAB7DC /* SnapKit */,
+			);
 			productName = GPT360;
 			productReference = 438EEAF92C1B331B00FAB7DC /* GPT360.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +223,10 @@
 				Base,
 			);
 			mainGroup = 438EEAF02C1B331B00FAB7DC;
+			packageReferences = (
+				438EEB112C1B38BC00FAB7DC /* XCRemoteSwiftPackageReference "OpenAI" */,
+				438EEB142C1B391300FAB7DC /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 438EEAFA2C1B331B00FAB7DC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,9 +254,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				438EEB012C1B331B00FAB7DC /* ViewController.swift in Sources */,
+				438EEB232C1B3C2C00FAB7DC /* OpenAIService.swift in Sources */,
+				438EEB302C1B99E900FAB7DC /* MessageCell.swift in Sources */,
+				438EEB1C2C1B3B1100FAB7DC /* OpenAIRepository.swift in Sources */,
+				438EEB2E2C1B7B6800FAB7DC /* DIContainer.swift in Sources */,
+				438EEB012C1B331B00FAB7DC /* ChatViewController.swift in Sources */,
+				438EEB192C1B3A9E00FAB7DC /* Message.swift in Sources */,
 				438EEAFD2C1B331B00FAB7DC /* AppDelegate.swift in Sources */,
+				438EEB322C1B9B2A00FAB7DC /* QuestionCell.swift in Sources */,
 				438EEAFF2C1B331B00FAB7DC /* SceneDelegate.swift in Sources */,
+				438EEB2A2C1B54D700FAB7DC /* ChatViewModel.swift in Sources */,
+				438EEB1F2C1B3B8300FAB7DC /* ChatUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +419,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -323,6 +448,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -358,6 +484,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		438EEB112C1B38BC00FAB7DC /* XCRemoteSwiftPackageReference "OpenAI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MacPaw/OpenAI.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		438EEB142C1B391300FAB7DC /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		438EEB122C1B38BC00FAB7DC /* OpenAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 438EEB112C1B38BC00FAB7DC /* XCRemoteSwiftPackageReference "OpenAI" */;
+			productName = OpenAI;
+		};
+		438EEB152C1B391300FAB7DC /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 438EEB142C1B391300FAB7DC /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 438EEAF12C1B331B00FAB7DC /* Project object */;
 }
