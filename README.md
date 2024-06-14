@@ -79,8 +79,8 @@ Replace your OpenAI API Key
 ## Screenshots
 
 <div style="display: flex; justify-content: space-between;">
-    <img src="/GPT360/Resources/screen1.png" alt="Screenshot 1" width="200" />
-    <img src="/GPT360/Resources/screen2.png" alt="Screenshot 2" width="200" />
+    <img src="/GPT360/Resources/Screen1.png" alt="Screenshot 1" width="200" />
+    <img src="/GPT360/Resources/Screen2.png" alt="Screenshot 2" width="200" />
 </div>
 
 
