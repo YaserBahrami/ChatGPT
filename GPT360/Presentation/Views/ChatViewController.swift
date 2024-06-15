@@ -130,6 +130,7 @@ class ChatViewController: UIViewController {
         layout.scrollDirection = .horizontal
         layout.minimumInteritemSpacing = 10
         layout.minimumLineSpacing = 10
+        layout.itemSize.width = view.bounds.width * PredefinedConstants.UI.collectionViewCellWidthMultiply
         
         suggestionCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         suggestionCollectionView.register(QuestionCell.self, forCellWithReuseIdentifier: "questionCell")
@@ -143,6 +144,8 @@ class ChatViewController: UIViewController {
             make.bottom.equalTo(textField.snp.top).offset(-8)
             make.height.equalTo(100)
         }
+        
+        suggestionCollectionView.decelerationRate = .fast
     }
     
     private func bindViewModel() {
@@ -242,8 +245,8 @@ extension ChatViewController: UICollectionViewDataSource, UICollectionViewDelega
 
 extension ChatViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = view.bounds.width * 0.8 // 80% of the screen width
-        let height = suggestionCollectionView.bounds.height // Full height of the collection view
+        let width = (collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize.width
+        let height = suggestionCollectionView.bounds.height
         return CGSize(width: width, height: height)
     }
 }
@@ -260,5 +263,20 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
         let message = viewModel.messages[indexPath.row]
         cell.configure(with: message)
         return cell
+    }
+}
+
+
+extension ChatViewController: UIScrollViewDelegate {
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        guard let collectionView = scrollView as? UICollectionView else { return }
+
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
+
+        let offset = scrollView.contentOffset.x
+        let index = round(offset / cellWidthIncludingSpacing)
+
+        targetContentOffset.pointee = CGPoint(x: index * cellWidthIncludingSpacing, y: targetContentOffset.pointee.y)
     }
 }
