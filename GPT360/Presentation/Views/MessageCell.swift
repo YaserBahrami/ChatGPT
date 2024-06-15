@@ -29,7 +29,7 @@ class MessageCell: UITableViewCell {
         contentView.addSubview(cardView)
         
         messageLabel.numberOfLines = 0
-        messageLabel.textColor = PredefinedConstants.UI.messageTextColor
+        messageLabel.textColor = PredefinedConstants.UI.primaryTextColor
         cardView.addSubview(messageLabel)
         
         messageLabel.snp.makeConstraints { make in

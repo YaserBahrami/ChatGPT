@@ -43,17 +43,18 @@ struct PredefinedConstants {
         static let cardViewBackgroundColor: UIColor = UIColor.gray.withAlphaComponent(0.1)
         static let suggestionViewBackgroundColor: UIColor = UIColor.lightGray.withAlphaComponent(0.1)
         
-        static let messageTextColor: UIColor = .white
+        static let primaryTextColor: UIColor = .white
         
     }
     
     struct Text {
         static let navigationTitle = "Chat GPT"
         static let SuggestionLabel = "Questions you can ask..."
+        static let chatTextFieldPlaceholder = "Ask me anything..."
     }
     
     struct Fonts {
-        static let titleFont = UIFont.systemFont(ofSize: 24, weight: .bold)
+        static let titleFont = UIFont.systemFont(ofSize: 18, weight: .semibold)
         static let suggestionLabelFont = UIFont.systemFont(ofSize: 14, weight: .regular)
     }
     

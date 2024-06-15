@@ -14,8 +14,9 @@ class ChatViewController: UIViewController {
     
     private var viewModel: ChatViewModel
     private var suggestionCollectionView: UICollectionView!
+    private var suggestionLabel: UILabel!
     private var chatTableView: UITableView!
-    private var textField: UITextField!
+    private var chatTextField: UITextField!
     private var sendButton: UIButton!
     
     
@@ -41,14 +42,14 @@ class ChatViewController: UIViewController {
         setupUI()
         bindViewModel()
         
-        textField.delegate = self
+        chatTextField.delegate = self
         // Keyboard notifications
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func setupUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .clear
         let backgroundImage = PredefinedConstants.Images.backgroundImage
         let backgroundImageView = UIImageView(image: backgroundImage)
         backgroundImageView.contentMode = .scaleAspectFill
@@ -65,7 +66,7 @@ class ChatViewController: UIViewController {
     
     private func setupNavigationBar() {
         navigationItem.title = PredefinedConstants.Text.navigationTitle
-        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        let textAttributes = [NSAttributedString.Key.foregroundColor: PredefinedConstants.UI.primaryTextColor]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         
         let removeButton = UIBarButtonItem(image: PredefinedConstants.Images.deleteButtonImage , style: .plain, target: self, action: #selector(deleteButtonTapped))
@@ -89,11 +90,12 @@ class ChatViewController: UIViewController {
     }
     
     private func setupNewMessageUI() {
-        textField = UITextField()
-        textField.borderStyle = .roundedRect
-        view.addSubview(textField)
+        chatTextField = UITextField()
+        chatTextField.placeholder = PredefinedConstants.Text.chatTextFieldPlaceholder
+        chatTextField.borderStyle = .roundedRect
+        view.addSubview(chatTextField)
         
-        textField.snp.makeConstraints { make in
+        chatTextField.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(PredefinedConstants.UI.chatBoxMargin)
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-PredefinedConstants.UI.topBottomMargin)
             make.height.equalTo(PredefinedConstants.UI.chatBoxHeight)
@@ -105,9 +107,9 @@ class ChatViewController: UIViewController {
         view.addSubview(sendButton)
         
         sendButton.snp.makeConstraints { make in
-            make.leading.equalTo(textField.snp.trailing).offset(PredefinedConstants.UI.topBottomMargin)
+            make.leading.equalTo(chatTextField.snp.trailing).offset(PredefinedConstants.UI.topBottomMargin)
             make.trailing.equalToSuperview().offset(-PredefinedConstants.UI.chatBoxMargin)
-            make.centerY.equalTo(textField)
+            make.centerY.equalTo(chatTextField)
             make.width.equalTo(PredefinedConstants.UI.chatBoxHeight)
             make.height.equalTo(PredefinedConstants.UI.chatBoxHeight)
         }
@@ -129,11 +131,23 @@ class ChatViewController: UIViewController {
         
         suggestionCollectionView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(textField.snp.top).offset(-PredefinedConstants.UI.topBottomMargin)
+            make.bottom.equalTo(chatTextField.snp.top).offset(-PredefinedConstants.UI.topBottomMargin)
             make.height.equalTo(PredefinedConstants.UI.collectionViewCellHeight)
         }
         
         suggestionCollectionView.decelerationRate = .fast
+        
+        suggestionLabel = UILabel()
+        suggestionLabel.text = PredefinedConstants.Text.SuggestionLabel
+        suggestionLabel.font = PredefinedConstants.Fonts.titleFont
+        suggestionLabel.textColor = PredefinedConstants.UI.primaryTextColor
+        view.addSubview(suggestionLabel)
+        
+        suggestionLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(PredefinedConstants.UI.questionCardViewSideMargin)
+            make.trailing.equalToSuperview().offset(-PredefinedConstants.UI.questionCardViewSideMargin)
+            make.bottom.equalTo(suggestionCollectionView.snp.top).offset(-PredefinedConstants.UI.questionCardViewMargin)
+        }
     }
     
     private func bindViewModel() {
@@ -160,10 +174,10 @@ class ChatViewController: UIViewController {
     }
     
     @objc private func sendButtonTapped() {
-        guard let text = textField.text, !text.isEmpty else { return }
+        guard let text = chatTextField.text, !text.isEmpty else { return }
         viewModel.sendMessage(text)
         viewModel.messages.append(Message(text: text, isUser: true))
-        textField.text = ""
+        chatTextField.text = ""
         chatTableView.reloadData()
         view.endEditing(true)
     }
@@ -183,7 +197,7 @@ class ChatViewController: UIViewController {
         guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         let keyboardHeight = keyboardFrame.height
         UIView.animate(withDuration: 0.3) {
-            self.textField.transform = CGAffineTransform(translationX: 0, y: -keyboardHeight)
+            self.chatTextField.transform = CGAffineTransform(translationX: 0, y: -keyboardHeight)
             self.sendButton.transform = CGAffineTransform(translationX: 0, y: -keyboardHeight)
 
         }
@@ -191,7 +205,7 @@ class ChatViewController: UIViewController {
         
     @objc private func keyboardWillHide(_ notification: Notification) {
         UIView.animate(withDuration: 0.3) {
-            self.textField.transform = .identity
+            self.chatTextField.transform = .identity
             self.sendButton.transform = .identity
 
         }
@@ -225,7 +239,7 @@ extension ChatViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let question = PredefinedConstants.sampleQuestions[indexPath.item]
-        textField.text = question
+        chatTextField.text = question
     }
 }
 

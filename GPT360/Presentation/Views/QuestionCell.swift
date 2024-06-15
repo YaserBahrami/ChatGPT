@@ -44,7 +44,7 @@ class QuestionCell: UICollectionViewCell {
         questionLabel.numberOfLines = 0
         questionLabel.textAlignment = .center
         questionLabel.font = PredefinedConstants.Fonts.suggestionLabelFont
-        questionLabel.textColor = .white
+        questionLabel.textColor = PredefinedConstants.UI.primaryTextColor
         cardView.addSubview(questionLabel)
         
         questionLabel.snp.makeConstraints { make in
