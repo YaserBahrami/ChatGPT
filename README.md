@@ -6,9 +6,11 @@ This project simulates a chat interaction similar to those with OpenAI's convers
 
 ## Features
 
-- Message Display: Messages are displayed in a UITableView with custom cells (MessageCell) to distinguish between user and system messages.
-- User Input: User can input text using a UITextField located at the bottom of the screen.
-- Suggestion Collection: A UICollectionView displays suggested questions (sampleQuestions) horizontally below the text field for user convenience.
+- Dynamic Chat Interface: User and bot messages are displayed with smooth scrolling and automatic UI adjustments.
+- User Input: The user can input text using a UITextField at the bottom of the screen.
+- Suggestions Feature: Horizontal scrolling collection view with predefined sample questions.
+- Local Storage: Save and load chat history using UserDefaults.
+- Keyboard Handling: Automatic UI adjustments and easy dismissal when the keyboard appears or disappears.
 
 
 ## Tech Stack
