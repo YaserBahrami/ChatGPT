@@ -17,6 +17,7 @@ class ChatViewModel: ObservableObject {
     
     init(chatUseCase: ChatUseCase) {
         self.chatUseCase = chatUseCase
+        loadMessages()
     }
     
     func sendMessage(_ text: String) {
@@ -30,12 +31,31 @@ class ChatViewModel: ObservableObject {
                 if case .failure(let error) = completion {
                     let errorMessage = Message(text: "Error: \(error.localizedDescription)", isUser: false)
                     self.messages.append(errorMessage)
+                    self.saveMessages()
                 }
             }, receiveValue: { [weak self] responseText in
                 guard let self = self else { return }
                 self.messages.append(Message(text: responseText, isUser: false))
+                self.saveMessages()
             })
             .store(in: &cancellables)
+    }
+    
+    func deleteAllMessages() {
+        messages.removeAll()
+        saveMessages()
+    }
+    
+    private func saveMessages() {
+        let messagesData = try? JSONEncoder().encode(messages)
+        UserDefaults.standard.set(messagesData, forKey: PredefinedConstants.KeyIds.messagesKey)
+    }
+    
+    private func loadMessages() {
+        guard let messagesData = UserDefaults.standard.data(forKey: PredefinedConstants.KeyIds.messagesKey),
+              let savedMessages = try? JSONDecoder().decode([Message].self, from: messagesData) else { return }
+        print(savedMessages)
+        messages = savedMessages
     }
     
 }

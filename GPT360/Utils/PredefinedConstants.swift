@@ -58,9 +58,11 @@ struct PredefinedConstants {
         static let suggestionLabelFont = UIFont.systemFont(ofSize: 14, weight: .regular)
     }
     
-    struct Cells {
+    struct KeyIds {
         static let questionCellId = "questionCell"
         static let messageCellId = "messageCell"
+        static let messagesKey = "SavedMessages"
+
     }
     
     struct Images {

@@ -76,7 +76,7 @@ class ChatViewController: UIViewController {
     private func setupTableViewUI() {
         chatTableView = UITableView()
         chatTableView.backgroundColor = .clear
-        chatTableView.register(MessageCell.self, forCellReuseIdentifier: PredefinedConstants.Cells.messageCellId)
+        chatTableView.register(MessageCell.self, forCellReuseIdentifier: PredefinedConstants.KeyIds.messageCellId)
         chatTableView.dataSource = self
         chatTableView.delegate = self
         chatTableView.rowHeight = UITableView.automaticDimension
@@ -183,7 +183,7 @@ class ChatViewController: UIViewController {
     }
     
     @objc private func deleteButtonTapped() {
-        viewModel.messages.removeAll()
+        viewModel.deleteAllMessages()
         chatTableView.reloadData()
     }
     
@@ -191,6 +191,7 @@ class ChatViewController: UIViewController {
         let image = isLoading ? PredefinedConstants.Images.loadingButtonImage : PredefinedConstants.Images.sendButtonImage
         sendButton.setImage(image, for: .normal)
         sendButton.isEnabled = !isLoading
+        chatTextField.isEnabled = !isLoading
     }
     
     @objc private func keyboardWillShow(_ notification: Notification) {
@@ -232,7 +233,7 @@ extension ChatViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PredefinedConstants.Cells.questionCellId, for: indexPath) as! QuestionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PredefinedConstants.KeyIds.questionCellId, for: indexPath) as! QuestionCell
         cell.configure(with: PredefinedConstants.sampleQuestions[indexPath.item])
         return cell
     }
@@ -261,7 +262,7 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PredefinedConstants.Cells.messageCellId, for: indexPath) as! MessageCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: PredefinedConstants.KeyIds.messageCellId, for: indexPath) as! MessageCell
         let message = viewModel.messages[indexPath.row]
         cell.configure(with: message)
         return cell

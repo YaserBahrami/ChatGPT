@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Message {
+struct Message: Codable {
     let text: String
     let isUser: Bool
 }
