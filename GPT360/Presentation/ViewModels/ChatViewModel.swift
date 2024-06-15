@@ -37,25 +37,5 @@ class ChatViewModel: ObservableObject {
             })
             .store(in: &cancellables)
     }
-    func sendMessage2(_ text: String) {
-        let userMessage = Message(text: text, isUser: true)
-        messages.append(userMessage)
-        isLoading = true
-        
-        chatUseCase.fetchResponse(for: text)
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { [weak self] completion in
-                guard let self = self else { return }
-                self.isLoading = false
-                if case .failure(let error) = completion {
-                    let errorMessage = Message(text: "Error: \(error.localizedDescription)", isUser: false)
-                    self.messages.append(errorMessage)
-                }
-            }, receiveValue: { [weak self] responseText in
-                guard let self = self else { return }
-                let botMessage = Message(text: responseText, isUser: false)
-                self.messages.append(botMessage)
-            })
-            .store(in: &cancellables)
-    }
+    
 }
