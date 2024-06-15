@@ -24,36 +24,36 @@ class MessageCell: UITableViewCell {
         self.backgroundColor = .clear
         selectionStyle = .none
         
-        cardView.layer.cornerRadius = 8
-        cardView.layer.borderWidth = 1
+        cardView.layer.cornerRadius = PredefinedConstants.UI.cornerRadius
+        cardView.layer.borderWidth = PredefinedConstants.UI.borderWidth
         contentView.addSubview(cardView)
         
         messageLabel.numberOfLines = 0
-        messageLabel.textColor = .white
+        messageLabel.textColor = PredefinedConstants.UI.messageTextColor
         cardView.addSubview(messageLabel)
         
         messageLabel.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(8)
+            make.edges.equalToSuperview().inset(PredefinedConstants.UI.messageViewMargin)
         }
     }
 
     func configure(with message: Message) {
         messageLabel.text = message.text
         if message.isUser {
-            cardView.backgroundColor = UIColor.systemBlue.withAlphaComponent(0.1)
-            cardView.layer.borderColor = UIColor.blue.cgColor
+            cardView.backgroundColor = PredefinedConstants.UI.cardViewBackgroundColor
+            cardView.layer.borderColor = PredefinedConstants.UI.userMessageBorderColor
             cardView.snp.remakeConstraints { make in
-                make.top.bottom.equalToSuperview().inset(8)
-                make.width.lessThanOrEqualToSuperview().multipliedBy(0.8)
-                make.trailing.equalToSuperview().offset(-8)
+                make.top.bottom.equalToSuperview().inset(PredefinedConstants.UI.messageViewMargin)
+                make.width.lessThanOrEqualToSuperview().multipliedBy(PredefinedConstants.UI.messageCellWidthMultiply)
+                make.trailing.equalToSuperview().offset(-PredefinedConstants.UI.messageViewMargin)
             }
         } else {
-            cardView.backgroundColor = UIColor.systemGray.withAlphaComponent(0.1)
-            cardView.layer.borderColor = UIColor.white.cgColor
+            cardView.backgroundColor = PredefinedConstants.UI.cardViewBackgroundColor
+            cardView.layer.borderColor = PredefinedConstants.UI.systemMessageBorderColor
             cardView.snp.remakeConstraints { make in
-                make.top.bottom.equalToSuperview().inset(8)
-                make.width.lessThanOrEqualToSuperview().multipliedBy(0.8)
-                make.leading.equalToSuperview().offset(8)
+                make.top.bottom.equalToSuperview().inset(PredefinedConstants.UI.messageViewMargin)
+                make.width.lessThanOrEqualToSuperview().multipliedBy(PredefinedConstants.UI.messageCellWidthMultiply)
+                make.leading.equalToSuperview().offset(PredefinedConstants.UI.messageViewMargin)
             }
         }
     }

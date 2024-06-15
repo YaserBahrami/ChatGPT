@@ -18,18 +18,7 @@ class ChatViewController: UIViewController {
     private var textField: UITextField!
     private var sendButton: UIButton!
     
-    private let sampleQuestions = [
-        "Tell me about 1453 in Turkish culture",
-        "What's AI?",
-        "Tell me a joke",
-        "How's the weather",
-        "Recommend a movie",
-        "How to cook pasta?",
-        "What is Swift programming language",
-        "Define gravity",
-        "Teach me greeting in Turkish language",
-        "List me 5 places I must visit in Turkey"
-    ]
+    
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -60,7 +49,7 @@ class ChatViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .white
-        let backgroundImage = UIImage(named: "Background")
+        let backgroundImage = PredefinedConstants.Images.backgroundImage
         let backgroundImageView = UIImageView(image: backgroundImage)
         backgroundImageView.contentMode = .scaleAspectFill
         view.addSubview(backgroundImageView)
@@ -75,28 +64,27 @@ class ChatViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        navigationItem.title = "Chat GPT"
+        navigationItem.title = PredefinedConstants.Text.navigationTitle
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         
-        let removeButton = UIBarButtonItem(image: UIImage(named: "icon_delete"), style: .plain, target: self, action: #selector(deleteButtonTapped))
+        let removeButton = UIBarButtonItem(image: PredefinedConstants.Images.deleteButtonImage , style: .plain, target: self, action: #selector(deleteButtonTapped))
         navigationItem.rightBarButtonItem = removeButton
     }
     
     private func setupTableViewUI() {
         chatTableView = UITableView()
         chatTableView.backgroundColor = .clear
-        chatTableView.register(MessageCell.self, forCellReuseIdentifier: "messageCell")
+        chatTableView.register(MessageCell.self, forCellReuseIdentifier: PredefinedConstants.Cells.messageCellId)
         chatTableView.dataSource = self
         chatTableView.delegate = self
-        chatTableView.estimatedRowHeight = 80
         chatTableView.rowHeight = UITableView.automaticDimension
         view.addSubview(chatTableView)
         
         chatTableView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(8)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(PredefinedConstants.UI.topBottomMargin)
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-200)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-PredefinedConstants.UI.collectionViewCellHeight * 2)
         }
     }
     
@@ -106,9 +94,9 @@ class ChatViewController: UIViewController {
         view.addSubview(textField)
         
         textField.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(16)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-8)
-            make.height.equalTo(36)
+            make.leading.equalToSuperview().offset(PredefinedConstants.UI.chatBoxMargin)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-PredefinedConstants.UI.topBottomMargin)
+            make.height.equalTo(PredefinedConstants.UI.chatBoxHeight)
         }
         
         sendButton = UIButton(type: .custom)
@@ -117,19 +105,19 @@ class ChatViewController: UIViewController {
         view.addSubview(sendButton)
         
         sendButton.snp.makeConstraints { make in
-            make.leading.equalTo(textField.snp.trailing).offset(8)
-            make.trailing.equalToSuperview().offset(-16)
+            make.leading.equalTo(textField.snp.trailing).offset(PredefinedConstants.UI.topBottomMargin)
+            make.trailing.equalToSuperview().offset(-PredefinedConstants.UI.chatBoxMargin)
             make.centerY.equalTo(textField)
-            make.width.equalTo(36)
-            make.height.equalTo(36)
+            make.width.equalTo(PredefinedConstants.UI.chatBoxHeight)
+            make.height.equalTo(PredefinedConstants.UI.chatBoxHeight)
         }
     }
     
     private func setupCollectionViewUI() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.minimumInteritemSpacing = 10
-        layout.minimumLineSpacing = 10
+        layout.minimumInteritemSpacing = PredefinedConstants.UI.collectionViewCellSpace
+        layout.minimumLineSpacing = PredefinedConstants.UI.collectionViewCellSpace
         layout.itemSize.width = view.bounds.width * PredefinedConstants.UI.collectionViewCellWidthMultiply
         
         suggestionCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -141,8 +129,8 @@ class ChatViewController: UIViewController {
         
         suggestionCollectionView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(textField.snp.top).offset(-8)
-            make.height.equalTo(100)
+            make.bottom.equalTo(textField.snp.top).offset(-PredefinedConstants.UI.topBottomMargin)
+            make.height.equalTo(PredefinedConstants.UI.collectionViewCellHeight)
         }
         
         suggestionCollectionView.decelerationRate = .fast
@@ -186,7 +174,7 @@ class ChatViewController: UIViewController {
     }
     
     private func updateSendButtonState(isLoading: Bool) {
-        let image = isLoading ? UIImage(named: "icon_loading") : UIImage(named: "icon_send")
+        let image = isLoading ? PredefinedConstants.Images.loadingButtonImage : PredefinedConstants.Images.sendButtonImage
         sendButton.setImage(image, for: .normal)
         sendButton.isEnabled = !isLoading
     }
@@ -226,17 +214,17 @@ extension ChatViewController: UITextFieldDelegate {
 
 extension ChatViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sampleQuestions.count
+        return PredefinedConstants.sampleQuestions.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "questionCell", for: indexPath) as! QuestionCell
-        cell.configure(with: sampleQuestions[indexPath.item])
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PredefinedConstants.Cells.questionCellId, for: indexPath) as! QuestionCell
+        cell.configure(with: PredefinedConstants.sampleQuestions[indexPath.item])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let question = sampleQuestions[indexPath.item]
+        let question = PredefinedConstants.sampleQuestions[indexPath.item]
         textField.text = question
     }
 }
@@ -259,7 +247,7 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: PredefinedConstants.Cells.messageCellId, for: indexPath) as! MessageCell
         let message = viewModel.messages[indexPath.row]
         cell.configure(with: message)
         return cell

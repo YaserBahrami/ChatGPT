@@ -27,6 +27,7 @@
 		438EEB372C1BC5FD00FAB7DC /* MVVM.png in Resources */ = {isa = PBXBuildFile; fileRef = 438EEB362C1BC5FD00FAB7DC /* MVVM.png */; };
 		438EEB3A2C1BC6D400FAB7DC /* Screen1.png in Resources */ = {isa = PBXBuildFile; fileRef = 438EEB382C1BC6D400FAB7DC /* Screen1.png */; };
 		438EEB3B2C1BC6D400FAB7DC /* Screen2.png in Resources */ = {isa = PBXBuildFile; fileRef = 438EEB392C1BC6D400FAB7DC /* Screen2.png */; };
+		438EEB3E2C1D1A5800FAB7DC /* PredefinedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438EEB3D2C1D1A5800FAB7DC /* PredefinedConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		438EEB362C1BC5FD00FAB7DC /* MVVM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MVVM.png; sourceTree = "<group>"; };
 		438EEB382C1BC6D400FAB7DC /* Screen1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screen1.png; sourceTree = "<group>"; };
 		438EEB392C1BC6D400FAB7DC /* Screen2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screen2.png; sourceTree = "<group>"; };
+		438EEB3D2C1D1A5800FAB7DC /* PredefinedConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredefinedConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 		438EEAFB2C1B331B00FAB7DC /* GPT360 */ = {
 			isa = PBXGroup;
 			children = (
+				438EEB3C2C1D198F00FAB7DC /* Utils */,
 				438EEB352C1BC5E800FAB7DC /* Resources */,
 				438EEB2C2C1B688500FAB7DC /* APP */,
 				438EEB102C1B379300FAB7DC /* Domain */,
@@ -195,6 +198,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		438EEB3C2C1D198F00FAB7DC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				438EEB3D2C1D1A5800FAB7DC /* PredefinedConstants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -285,6 +296,7 @@
 				438EEB012C1B331B00FAB7DC /* ChatViewController.swift in Sources */,
 				438EEB192C1B3A9E00FAB7DC /* Message.swift in Sources */,
 				438EEAFD2C1B331B00FAB7DC /* AppDelegate.swift in Sources */,
+				438EEB3E2C1D1A5800FAB7DC /* PredefinedConstants.swift in Sources */,
 				438EEB322C1B9B2A00FAB7DC /* QuestionCell.swift in Sources */,
 				438EEAFF2C1B331B00FAB7DC /* SceneDelegate.swift in Sources */,
 				438EEB2A2C1B54D700FAB7DC /* ChatViewModel.swift in Sources */,

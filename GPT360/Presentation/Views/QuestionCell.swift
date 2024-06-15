@@ -30,23 +30,25 @@ class QuestionCell: UICollectionViewCell {
     // MARK: - UI Setup
     
     private func setupUI() {
-        cardView.layer.cornerRadius = 10
-        cardView.layer.borderWidth = 1
-        cardView.layer.borderColor = UIColor.lightGray.cgColor
+        cardView.layer.cornerRadius = PredefinedConstants.UI.cornerRadius
+        cardView.backgroundColor = PredefinedConstants.UI.suggestionViewBackgroundColor
         contentView.addSubview(cardView)
         
+        let margin = PredefinedConstants.UI.questionCardViewMargin
+        let sideMargin = PredefinedConstants.UI.questionCardViewSideMargin
+        
         cardView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16))
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: margin, left: sideMargin, bottom: margin, right: sideMargin))
         }
         
         questionLabel.numberOfLines = 0
         questionLabel.textAlignment = .center
-        questionLabel.font = UIFont.systemFont(ofSize: 14)
+        questionLabel.font = PredefinedConstants.Fonts.suggestionLabelFont
         questionLabel.textColor = .white
         cardView.addSubview(questionLabel)
         
         questionLabel.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12))
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin))
         }
     }
     
